@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ড্যাশবোর্ড — Project X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f5f9;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            padding: 30px 24px;
+            color: #0b1b33;
+        }
+
+        .app-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* হেডার */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .app-icon-small {
+            width: 48px;
+            height: 48px;
+            background: #0b1b33;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 22px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 650;
+            letter-spacing: -0.5px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 14px;
+            color: #1f3a5f;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #e9edf2;
+        }
+
+        .btn-primary-sm {
+            background: #0b1b33;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-primary-sm:hover {
+            background: #1a2f4a;
+        }
+
+        /* স্ট্যাটাস বার */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 38px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 18px 22px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f6;
+        }
+
+        .stat-card .num {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0b1b33;
+        }
+
+        .stat-card .label {
+            font-size: 14px;
+            color: #53718e;
+            margin-top: 2px;
+        }
+
+        /* প্রজেক্ট গ্রিড */
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 24px;
+            padding: 22px 22px 26px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f8;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: #cbd5e1;
+        }
+
+        .project-card .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-card .title {
+            font-weight: 600;
+            font-size: 18px;
+            color: #0b1b33;
+        }
+
+        .project-card .cat {
+            font-size: 13px;
+            background: #f1f5f9;
+            padding: 3px 14px;
+            border-radius: 40px;
+            color: #2c405c;
+        }
+
+        .project-card .desc {
+            font-size: 14px;
+            color: #53718e;
+            margin: 10px 0 16px;
+            line-height: 1.5;
+        }
+
+        .project-card .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #7b94ad;
+            border-top: 1px solid #eef2f6;
+            padding-top: 14px;
+        }
+
+        .boost-badge {
+            background: #0b1b33;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-boost {
+            background: transparent;
+            border: 1px solid #d0d9e5;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-boost:hover {
+            background: #0b1b33;
+            color: white;
+            border-color: #0b1b33;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 32px;
+            border: 1px dashed #d0d9e5;
+        }
+
+        .empty-state .big {
+            font-size: 48px;
+            font-weight: 300;
+            color: #b0c4db;
+        }
+
+        .empty-state p {
+            color: #53718e;
+            margin-top: 10px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #7b94ad;
+            border-top: 1px solid #e2e9f2;
+            padding-top: 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .header { flex-direction: column; align-items: stretch; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- হেডার -->
+        <div class="header">
+            <div class="header-left">
+                <div class="app-icon-small">X</div>
+                <h1>ড্যাশবোর্ড</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn-outline" id="logoutBtn">প্রস্থান</button>
+                <button class="btn-primary-sm" id="newProjectBtn">+ নতুন প্রজেক্ট</button>
+            </div>
+        </div>
+
+        <!-- স্ট্যাটাস -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="num" id="totalProjects">০</div>
+                <div class="label">মোট প্রজেক্ট</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="boostedCount">০</div>
+                <div class="label">বুস্টেড</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="downloadCount">০</div>
+                <div class="label">মোট ডাউনলোড</div>
+            </div>
+        </div>
+
+        <!-- প্রজেক্ট লিস্ট -->
+        <div class="section-title">
+            <span>📁 আপনার প্রজেক্ট</span>
+        </div>
+
+        <div id="projectList">
+            <!-- ডায়নামিক প্রজেক্ট কার্ড এখানে আসবে -->
+            <div class="empty-state">
+                <div class="big">+</div>
+                <p>এখনো কোনো প্রজেক্ট যোগ করা হয়নি।<br>উপরে "নতুন প্রজেক্ট" বাটনে ক্লিক করুন।</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            Project X — ব্যক্তিগত ডেভ ভল্ট
+        </div>
+    </div>
+
+    <script>
+        // ডেমো ডেটা (পরে ব্যাকএন্ড থেকে আসবে)
+        let projects = [];
+
+        function renderProjects() {
+            const container = document.getElementById('projectList');
+            const total = document.getElementById('totalProjects');
+            const boosted = document.getElementById('boostedCount');
+
+            if (projects.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="big">+</div>
+                        <p>এখনো কোনো প্রজেক্ট যোগ করা হয়নি।<br>উপরে "নতুন প্রজেক্ট" বাটনে ক্লিক করুন।</p>
+                    </div>
+                `;
+                total.textContent = '০';
+                boosted.textContent = '০';
+                return;
+            }
+
+            total.textContent = projects.length;
+            const boostedTotal = projects.filter(p => p.boosted).length;
+            boosted.textContent = boostedTotal;
+
+            let html = '<div class="project-grid">';
+            projects.forEach((p, index) => {
+                html += `
+                    <div class="project-card">
+                        <div class="top">
+                            <span class="title">${p.name}</span>
+                            <span class="cat">${p.category}</span>
+                        </div>
+                        <div class="desc">${p.desc || 'কোন বিবরণ নেই'}</div>
+                        <div class="meta">
+                            <span>📥 ${p.downloads || ০} বার</span>
+                            ${p.boosted ? '<span class="boost-badge">বুস্টেড</span>' : ''}
+                        </div>
+                        <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
+                            <button class="btn-boost" data-index="${index}">${p.boosted ? 'বুস্ট রিমুভ' : 'বুস্ট করুন'}</button>
+                            <button class="btn-boost" style="border-color:#e2e9f2;" data-download="${index}">ডাউনলোড</button>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+
+            // ইভেন্ট হ্যান্ডলার
+            document.querySelectorAll('[data-index]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    projects[idx].boosted = !projects[idx].boosted;
+                    renderProjects();
+                });
+            });
+
+            document.querySelectorAll('[data-download]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    projects[idx].downloads = (projects[idx].downloads || 0) + 1;
+                    renderProjects();
+                    alert(`📥 "${projects[idx].name}" ডাউনলোড হচ্ছে...`);
+                });
+            });
+        }
+
+        // নতুন প্রজেক্ট যোগ করা (ডেমো)
+        document.getElementById('newProjectBtn').addEventListener('click', function() {
+            const name = prompt('প্রজেক্টের নাম লিখুন:');
+            if (!name) return;
+            const category = prompt('ক্যাটাগরি (যেমন: Web, App, Design):') || 'General';
+            const desc = prompt('সংক্ষিপ্ত বিবরণ:') || '';
+            projects.push({
+                name: name,
+                category: category,
+                desc: desc,
+                boosted: false,
+                downloads: 0
+            });
+            renderProjects();
+        });
+
+        // লগআউট
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('লগআউট করতে চান?')) {
+                alert('লগআউট হচ্ছে...');
+            }
+        });
+
+        // ডেমো ডেটা লোড (প্রথমবার)
+        renderProjects();
+    </script>
+
+</body>
+</html>
