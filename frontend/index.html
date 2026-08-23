@@ -30,7 +30,6 @@
             border-radius: 40px;
             padding: 48px 44px;
             box-shadow: 0 25px 50px -10px rgba(0, 20, 40, 0.15);
-            transition: 0.2s;
         }
 
         .app-icon {
@@ -122,13 +121,11 @@
             cursor: pointer;
             transition: 0.2s;
             box-shadow: 0 8px 20px rgba(11, 27, 51, 0.15);
-            letter-spacing: 0.2px;
         }
 
         .btn-primary:hover {
             background: #1a2f4a;
             transform: scale(1.01);
-            box-shadow: 0 12px 28px rgba(11, 27, 51, 0.20);
         }
 
         .feature-grid {
@@ -167,10 +164,6 @@
             flex-wrap: wrap;
         }
 
-        .footer-note span {
-            opacity: 0.7;
-        }
-
         @media (max-width: 560px) {
             .card { padding: 32px 22px; }
             h1 { font-size: 30px; }
@@ -183,8 +176,6 @@
 <body>
 
     <div class="card">
-
-        <!-- অ্যাপ আইকন (ইমোজি নেই) -->
         <div class="app-icon">
             <span>X</span>
         </div>
@@ -223,6 +214,18 @@
 
         <div class="footer-note">
             <span>সংস্করণ ১.০.০</span>
+            <span>ব্যক্তিগত প্রকল্প</span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('enterBtn').addEventListener('click', function() {
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+
+</body>
+</html>            <span>সংস্করণ ১.০.০</span>
             <span>ব্যক্তিগত প্রকল্প</span>
         </div>
 
