@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { Pool } = require('pg');
 
 dotenv.config();
 
@@ -11,24 +10,23 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// ডেটাবেস কানেক্ট (PostgreSQL)
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
-});
-
-// টেস্ট রুট
+// হেলথ চেক
 app.get('/', (req, res) => {
-  res.json({ 
-    success: true, 
+  res.json({
+    success: true,
     message: '🚀 Project X Backend is running!',
-    database: 'PostgreSQL connected'
+    timestamp: new Date().toISOString()
   });
 });
 
-// API টেস্ট
+// টেস্ট API
 app.get('/api/test', (req, res) => {
   res.json({ success: true, message: 'API is working!' });
+});
+
+// 404 হ্যান্ডলার
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: 'Route not found' });
 });
 
 // সার্ভার চালু
