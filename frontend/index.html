@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project X — Dev Vault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8fafc;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: #0b1b33;
+        }
+
+        .card {
+            max-width: 780px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 48px 44px;
+            box-shadow: 0 25px 50px -10px rgba(0, 20, 40, 0.15);
+            transition: 0.2s;
+        }
+
+        .app-icon {
+            width: 68px;
+            height: 68px;
+            background: linear-gradient(145deg, #0b1b33, #1a3355);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 28px;
+            color: white;
+            letter-spacing: -0.5px;
+            box-shadow: 0 8px 18px rgba(11, 27, 51, 0.20);
+            margin-bottom: 28px;
+        }
+
+        .app-icon span {
+            transform: rotate(-2deg);
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #0b1b33;
+            margin-bottom: 6px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eef2f6;
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1f3a5f;
+            letter-spacing: 0.3px;
+            margin-bottom: 24px;
+        }
+
+        .desc {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #2c405c;
+            max-width: 540px;
+            margin-bottom: 34px;
+        }
+
+        .status-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 14px 22px;
+            border-radius: 80px;
+            margin-bottom: 38px;
+            width: fit-content;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #1f8b4c;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-label {
+            font-size: 15px;
+            font-weight: 450;
+            color: #1c3a5a;
+        }
+
+        .status-label strong {
+            font-weight: 600;
+            color: #0b1b33;
+        }
+
+        .btn-primary {
+            background: #0b1b33;
+            color: white;
+            border: none;
+            padding: 14px 48px;
+            border-radius: 60px;
+            font-size: 16px;
+            font-weight: 550;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(11, 27, 51, 0.15);
+            letter-spacing: 0.2px;
+        }
+
+        .btn-primary:hover {
+            background: #1a2f4a;
+            transform: scale(1.01);
+            box-shadow: 0 12px 28px rgba(11, 27, 51, 0.20);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 44px;
+            border-top: 1px solid #e9edf2;
+            padding-top: 36px;
+        }
+
+        .feature-item {
+            text-align: left;
+        }
+
+        .feature-item .title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #0b1b33;
+            margin-bottom: 2px;
+        }
+
+        .feature-item .sub {
+            font-size: 14px;
+            color: #53718e;
+        }
+
+        .footer-note {
+            margin-top: 34px;
+            font-size: 14px;
+            color: #7b94ad;
+            border-top: 1px solid #edf2f8;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-note span {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 560px) {
+            .card { padding: 32px 22px; }
+            h1 { font-size: 30px; }
+            .feature-grid { grid-template-columns: 1fr; gap: 14px; }
+            .status-row { width: 100%; justify-content: center; }
+            .btn-primary { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <!-- অ্যাপ আইকন (ইমোজি নেই) -->
+        <div class="app-icon">
+            <span>X</span>
+        </div>
+
+        <h1>Project X</h1>
+        <div class="badge">Personal Dev Vault</div>
+
+        <p class="desc">
+            আপনার সব ডেভেলপমেন্ট প্রজেক্ট সংরক্ষণ, শেয়ার ও ট্র্যাক করার জন্য
+            নিরাপদ ব্যক্তিগত প্ল্যাটফর্ম।
+        </p>
+
+        <div class="status-row">
+            <span class="status-dot"></span>
+            <span class="status-label">
+                <strong>সক্রিয়</strong> — বর্তমানে ডেভেলপমেন্ট মোড
+            </span>
+        </div>
+
+        <button class="btn-primary" id="enterBtn">ভল্টে প্রবেশ করুন</button>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="title">আপলোড</div>
+                <div class="sub">প্রজেক্ট ফাইল ও ডকুমেন্টেশন</div>
+            </div>
+            <div class="feature-item">
+                <div class="title">ডাউনলোড</div>
+                <div class="sub">যেকোনো সময় অ্যাক্সেস</div>
+            </div>
+            <div class="feature-item">
+                <div class="title">বুস্ট</div>
+                <div class="sub">গুরুত্বপূর্ণ প্রজেক্ট প্রাধান্য পান</div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>সংস্করণ ১.০.০</span>
+            <span>ব্যক্তিগত প্রকল্প</span>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('enterBtn').addEventListener('click', function() {
+            alert('লগইন সিস্টেম শীঘ্রই যোগ হবে।');
+        });
+    </script>
+
+</body>
+</html>
