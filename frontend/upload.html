@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>নতুন প্রজেক্ট — Project X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f5f9;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            padding: 30px 20px;
+            color: #0b1b33;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 36px;
+            padding: 40px 36px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+            border: 1px solid #edf2f8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 28px;
+            color: #53718e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .back-link:hover {
+            color: #0b1b33;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+
+        .sub {
+            color: #53718e;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #1f3a5f;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #dbe2eb;
+            border-radius: 16px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #fafcfd;
+            transition: 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #0b1b33;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(11,27,51,0.05);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .file-zone {
+            border: 2px dashed #dbe2eb;
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #fafcfd;
+        }
+
+        .file-zone:hover {
+            border-color: #0b1b33;
+            background: #f5f8fc;
+        }
+
+        .file-zone .hint {
+            font-size: 14px;
+            color: #7b94ad;
+        }
+
+        .file-zone .hint strong {
+            color: #0b1b33;
+            font-weight: 500;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .btn-submit {
+            background: #0b1b33;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-size: 16px;
+            font-weight: 550;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #1a2f4a;
+        }
+
+        .footer {
+            margin-top: 36px;
+            font-size: 14px;
+            color: #7b94ad;
+            text-align: center;
+            border-top: 1px solid #edf2f8;
+            padding-top: 24px;
+        }
+
+        @media (max-width: 500px) {
+            .container { padding: 28px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="dashboard.html" class="back-link">← ড্যাশবোর্ডে ফিরুন</a>
+
+        <h2>নতুন প্রজেক্ট যোগ করুন</h2>
+        <p class="sub">আপনার ডেভেলপমেন্ট প্রজেক্টের তথ্য দিন</p>
+
+        <form id="uploadForm">
+            <div class="form-group">
+                <label for="projectName">প্রজেক্টের নাম *</label>
+                <input type="text" id="projectName" placeholder="যেমন: My Portfolio" required />
+            </div>
+
+            <div class="form-group">
+                <label for="category">ক্যাটাগরি</label>
+                <select id="category">
+                    <option value="Web">ওয়েব</option>
+                    <option value="App">অ্যাপ</option>
+                    <option value="Design">ডিজাইন</option>
+                    <option value="Backend">ব্যাকএন্ড</option>
+                    <option value="Other">অন্যান্য</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">বিবরণ</label>
+                <textarea id="description" placeholder="প্রজেক্ট সম্পর্কে সংক্ষেপে লিখুন..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>প্রজেক্ট ফাইল (জিপ/পিডিএফ/ইমেজ)</label>
+                <div class="file-zone" id="fileZone">
+                    <div class="hint">
+                        <strong>ফাইল আপলোড করুন</strong><br />
+                        অথবা এখানে ক্লিক করুন
+                    </div>
+                    <div id="fileName" style="margin-top:12px; font-size:14px; color:#0b1b33;"></div>
+                </div>
+                <input type="file" id="fileInput" />
+            </div>
+
+            <button type="submit" class="btn-submit">প্রজেক্ট সংরক্ষণ করুন</button>
+        </form>
+
+        <div class="footer">
+            Project X — সিকিউর ডেভ ভল্ট
+        </div>
+    </div>
+
+    <script>
+        const fileZone = document.getElementById('fileZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileNameDisplay = document.getElementById('fileName');
+
+        fileZone.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                fileNameDisplay.textContent = '📎 ' + this.files[0].name;
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('projectName').value.trim();
+            if (!name) {
+                alert('প্রজেক্টের নাম দিন।');
+                return;
+            }
+
+            // ডেমো সেভ (পরে ব্যাকএন্ডে যোগ হবে)
+            const projectData = {
+                name: name,
+                category: document.getElementById('category').value,
+                description: document.getElementById('description').value,
+                file: fileInput.files[0] ? fileInput.files[0].name : 'ফাইল নেই'
+            };
+
+            console.log('প্রজেক্ট সংরক্ষিত:', projectData);
+            alert('✅ "' + name + '" প্রজেক্ট যোগ করা হয়েছে!');
+
+            // ড্যাশবোর্ডে রিডাইরেক্ট
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+
+</body>
+</html>
